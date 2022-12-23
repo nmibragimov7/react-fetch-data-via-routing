@@ -1,0 +1,28 @@
+.ring {
+  @apply w-10 h-10 inline-block relative mx-auto;
+
+  & div {
+    animation: ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    border-color: #0992C8 transparent transparent transparent;
+    @apply box-border block absolute w-10 h-10 rounded-[50%] border-solid border-4;
+
+    &:nth-child(1) {
+      animation-delay: -0.45s;
+    }
+    &:nth-child(2) {
+      animation-delay: -0.3s;
+    }
+    &:nth-child(3) {
+      animation-delay: -0.15s;
+    }
+  }
+}
+
+@keyframes ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
