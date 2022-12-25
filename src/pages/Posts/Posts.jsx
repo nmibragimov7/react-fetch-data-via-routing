@@ -1,6 +1,6 @@
 import React, {Suspense} from 'react';
 import axios from "axios";
-import {defer, useLoaderData, useNavigate, Await} from "react-router-dom";
+import {defer, useLoaderData, useNavigate, Await, Link} from "react-router-dom";
 import Fallback from "../../components/Fallback/Fallback";
 
 const Posts = () => {
@@ -9,6 +9,11 @@ const Posts = () => {
 
     return (
         <div className="flex flex-col gap-4">
+            <Link
+                className="max-w-xs text-center bg-primary-blue hover:bg-primary-blue/90 disabled:bg-primary-blue/90 shadow text-white px-8 py-4 mb-8"
+                to={('/posts/create')}>
+                Добавить пост
+            </Link>
             <Suspense fallback={<Fallback/>}>
                 <Await resolve={posts}>
                     {

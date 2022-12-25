@@ -5,3 +5,12 @@
 body {
   @apply text-base font-sans text-dark m-0 p-0;
 }
+
+.input {
+  @apply shadow-gray-100 h-full w-full leading-none bg-white-blue p-4 placeholder:font-light placeholder:text-gray outline-none border border-solid border-transparent mb-4;
+}
+
+.input::-webkit-outer-spin-button,
+.input::-webkit-inner-spin-button {
+   -webkit-appearance: none;
+}

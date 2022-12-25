@@ -2,10 +2,13 @@ import React from "react";
 import {RouterProvider} from "react-router-dom";
 
 import router from "./pages/Pages";
+import AuthProvider from "./hoc/AuthProvider";
 
 function App() {
     return (
-        <RouterProvider router={router}/>
+        <AuthProvider>
+            <RouterProvider router={router}/>
+        </AuthProvider>
     );
 }
 

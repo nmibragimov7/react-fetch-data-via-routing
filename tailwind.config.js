@@ -34,7 +34,7 @@ module.exports = {
                 'sans': ['Raleway', 'sans-serif']
             },
             boxShadow: {
-                'gray-100': '0px 5px 10px 3px rgba(202, 202, 202, 0.25)'
+                'gray-100': '0px 1px 10px 1px rgba(202, 202, 202, 0.25)'
             }
         },
     },
