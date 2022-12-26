@@ -10,6 +10,7 @@ import RequireAuth from "../hoc/RequireAuth";
 import Login from "./Login";
 import CreatePost, {createPostAction} from "./Posts/CreatePost";
 import ErrorPage from "../components/ErrorPage";
+import ErrorBoundary from "../hoc/ErrorBoundary";
 
 const router = createBrowserRouter(createRoutesFromElements(
     <>
@@ -29,9 +30,11 @@ const router = createBrowserRouter(createRoutesFromElements(
                 <Route
                     path=":id"
                     element={
-                        <RequireAuth>
-                            <PostDetail/>
-                        </RequireAuth>
+                        <ErrorBoundary>
+                            <RequireAuth>
+                                <PostDetail/>
+                            </RequireAuth>
+                        </ErrorBoundary>
                     }
                     errorElement={<ErrorPage/>}
                     loader={postLoader}/>

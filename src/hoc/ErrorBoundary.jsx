@@ -28,9 +28,13 @@ class ErrorBoundary extends React.Component {
         if (hasError) {
             return (
                 <Suspense fallback={<Fallback />}>
-                    <div className={""}>
-                        <div>Что то пошло не так!(</div>
-                        <button onClick={this.reloadPage}>Обновить страницу</button>
+                    <div className="text-center">
+                        <h1 className="text-2xl font-bold text-red text-center mb-4">Что то пошло не так!(</h1>
+                        <h2>
+                            <button
+                                className="bg-primary-blue hover:bg-primary-blue/90 disabled:bg-primary-blue/90 shadow text-white px-8 py-4"
+                                onClick={this.reloadPage}>Обновить страницу</button>
+                        </h2>
                     </div>
                 </Suspense>
             );
