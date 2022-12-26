@@ -1,6 +1,6 @@
 import React, {Suspense} from 'react';
 import axios from "axios";
-import {defer, useLoaderData, Await, json} from "react-router-dom";
+import {defer, useLoaderData, Await} from "react-router-dom";
 
 import Comments from "../../components/Comments";
 import Post from "../../components/Post";

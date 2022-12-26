@@ -17,14 +17,14 @@ const Layout = () => {
     }
 
     return (
-        <div className="bg-light-blue min-h-screen">
-            <div className="bg-primary-blue">
+        <div className="bg-white-blue min-h-screen">
+            <div className="bg-blue shadow-gray-100">
                 <div className="container mx-auto flex justify-between py-8 px-8 mb-10">
                     <div className="flex gap-6">
-                        <NavLink to={'/'} className="text-light-blue font-bold">Главная</NavLink>
-                        <NavLink to={'/posts'} className="text-light-blue font-bold">Посты</NavLink>
+                        <NavLink to={'/'} className="text-primary-blue font-bold">Главная</NavLink>
+                        <NavLink to={'/posts'} className="text-primary-blue font-bold">Посты</NavLink>
                     </div>
-                    <span className="text-light-blue font-bold cursor-pointer" onClick={logoutHandler}>
+                    <span className="text-primary-blue font-bold cursor-pointer" onClick={logoutHandler}>
                         {user ? 'Выйти' : 'Войти'}
                     </span>
                 </div>
