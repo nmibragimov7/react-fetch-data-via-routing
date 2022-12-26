@@ -9,6 +9,7 @@ import NotFound from "./NotFound";
 import RequireAuth from "../hoc/RequireAuth";
 import Login from "./Login";
 import CreatePost, {createPostAction} from "./Posts/CreatePost";
+import ErrorPage from "../components/ErrorPage";
 
 const router = createBrowserRouter(createRoutesFromElements(
     <>
@@ -23,9 +24,26 @@ const router = createBrowserRouter(createRoutesFromElements(
                             <Posts/>
                         </RequireAuth>
                     }
+                    errorElement={<ErrorPage/>}
                     loader={postsLoader} />
-                <Route path=":id" element={<PostDetail/>} loader={postLoader} />
-                <Route path="create" element={<CreatePost/>} action={createPostAction}/>
+                <Route
+                    path=":id"
+                    element={
+                        <RequireAuth>
+                            <PostDetail/>
+                        </RequireAuth>
+                    }
+                    errorElement={<ErrorPage/>}
+                    loader={postLoader}/>
+                <Route
+                    path="create"
+                    element={
+                        <RequireAuth>
+                            <CreatePost/>
+                        </RequireAuth>
+                    }
+                    errorElement={<ErrorPage/>}
+                    action={createPostAction}/>
             </Route>
             <Route path="*" element={<NotFound/>} />
         </Route>

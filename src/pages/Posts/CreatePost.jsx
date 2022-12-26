@@ -1,11 +1,10 @@
 import React from "react";
 import axios from "axios";
-import {Form, redirect, useNavigation} from "react-router-dom";
-import Fallback from "../../components/Fallback/Fallback";
-
+import {Form, redirect, useActionData, useNavigation} from "react-router-dom";
 
 const CreatePost = () => {
     const navigation = useNavigation();
+    const data = useActionData();
 
     return (
         <Form className="max-w-2xl mx-auto" action={"/posts/create"} method={"post"}>
@@ -20,7 +19,6 @@ const CreatePost = () => {
                 className="input"
                 type="text"
                 placeholder="Контент"/>
-            {/*    className="cursor-pointer bg-primary-blue hover:bg-primary-blue/90 disabled:bg-primary-blue/90 shadow text-white px-8 py-4"/>*/}
             <button
                 type={"submit"}
                 className="cursor-pointer bg-primary-blue hover:bg-primary-blue/90 disabled:bg-primary-blue/90 shadow text-white px-8 py-4"
@@ -29,6 +27,7 @@ const CreatePost = () => {
                    'Loading...' : 'Добавить'
                 }
             </button>
+            {data?.message && <div className="text-red font-bold text-center mt-4">{data?.message}</div>}
         </Form>
     );
 };
@@ -43,14 +42,18 @@ const createPost = async (post) => {
 
 export const createPostAction = async ({request}) => {
     const formData = await request.formData();
+    if (!formData.get('title') || !formData.get('body')) {
+        return { message: 'Все поля обязательные' };
+    }
+
     const newPost = {
         title: formData.get("title"),
         body: formData.get("body")
     }
 
     const post = await createPost(newPost);
-    console.log(post.id)
-    // return redirect("/posts/" + post.id);
+    return redirect("/posts/" + post.id);
+    // return { message: 'Пост успешно добавлен с id ' + post.id };
 }
 
 export default CreatePost;

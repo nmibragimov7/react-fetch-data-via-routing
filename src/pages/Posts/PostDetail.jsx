@@ -1,6 +1,6 @@
 import React, {Suspense} from 'react';
 import axios from "axios";
-import {defer, useLoaderData, Await} from "react-router-dom";
+import {defer, useLoaderData, Await, json} from "react-router-dom";
 
 import Comments from "../../components/Comments";
 import Post from "../../components/Post";
@@ -28,9 +28,12 @@ const PostDetail = () => {
 export default PostDetail;
 
 const fetchPostById = async (id) => {
-    const response = await axios.get('https://jsonplaceholder.typicode.com/posts/' + id);
-    console.log(response)
-    return response.data;
+    try {
+        const response = await axios.get('https://jsonplaceholder.typicode.com/posts/' + id);
+        return response.data;
+    } catch (e) {
+        throw new Response("Пост не найден", { status: 404, statusText: "Пост не найден"});
+    }
 }
 
 const fetchCommentsByPost = async (id) => {

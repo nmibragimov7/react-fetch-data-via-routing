@@ -29,9 +29,6 @@ const Posts = () => {
                                             <p>
                                                 {post.id}. {post.title}
                                             </p>
-                                            <p>
-                                                {post.body}
-                                            </p>
                                         </div>
                                     ))
                                 }

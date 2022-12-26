@@ -1,7 +1,7 @@
 import React from "react";
 import {useAsyncValue} from "react-router-dom";
 
-const Post = ({id}) => {
+const Post = () => {
     const post = useAsyncValue();
 
     return (
