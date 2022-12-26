@@ -9,6 +9,7 @@ const AuthProvider = ({children}) => {
         cb();
     }
     const logout = (cb) => {
+        setUser(null);
         cb();
     }
     const value = {

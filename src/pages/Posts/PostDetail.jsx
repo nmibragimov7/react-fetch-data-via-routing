@@ -29,6 +29,7 @@ export default PostDetail;
 
 const fetchPostById = async (id) => {
     const response = await axios.get('https://jsonplaceholder.typicode.com/posts/' + id);
+    console.log(response)
     return response.data;
 }
 
@@ -36,6 +37,7 @@ const fetchCommentsByPost = async (id) => {
     const response = await axios.get('https://jsonplaceholder.typicode.com/comments?postId=' + id);
     return response.data;
 }
+
 
 export const postLoader = async ({params}) => {
     const id = params.id;

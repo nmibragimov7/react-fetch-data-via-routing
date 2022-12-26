@@ -8,13 +8,13 @@ import Layout from "../layouts/Layout";
 import NotFound from "./NotFound";
 import RequireAuth from "../hoc/RequireAuth";
 import Login from "./Login";
-import CreatePost from "./Posts/CreatePost";
+import CreatePost, {createPostAction} from "./Posts/CreatePost";
 
 const router = createBrowserRouter(createRoutesFromElements(
     <>
         <Route path="/" element={<Layout/>}>
             <Route index element={<Main/>} />
-            <Route path="/login" element={<Login/>} />
+            <Route path="login" element={<Login/>} />
             <Route path="posts">
                 <Route
                     index
@@ -25,7 +25,7 @@ const router = createBrowserRouter(createRoutesFromElements(
                     }
                     loader={postsLoader} />
                 <Route path=":id" element={<PostDetail/>} loader={postLoader} />
-                <Route path="create" element={<CreatePost/>} />
+                <Route path="create" element={<CreatePost/>} action={createPostAction}/>
             </Route>
             <Route path="*" element={<NotFound/>} />
         </Route>
